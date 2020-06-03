@@ -1,16 +1,14 @@
 import express from 'express';
+import cors from 'cors';
+import routes from './routes';
+import path from 'path';
 
 const app = express();
 
-app.get('/users', (req, res) => {
-    console.log('Users list')
+app.use(cors());
+app.use(express.json()); //wor with json in express
+app.use(routes); //access routes in another path
 
-    res.json([
-        'Diego',
-        'Cleiton',
-        'Bruno',
-        'Daniel'
-    ])
-});
+app.use('/img', express.static(path.resolve(__dirname, '..', 'img'))); //work with statics files, in this case, images
 
 app.listen(3000);
