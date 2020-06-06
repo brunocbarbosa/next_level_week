@@ -1996,6 +1996,14 @@ component-emitter@^1.2.1:
   resolved "https://registry.yarnpkg.com/component-emitter/-/component-emitter-1.3.0.tgz#16e4070fba8ae29b679f2215853ee181ab2eabc0"
   integrity sha512-Rd3se6QB+sO1TwqZjscQrurpEPIfO0/yYnSin6Q/rD3mOutHvUrCAhJub3r90uNb+SESBuE0QYoB90YdfatsRg==
 
+composer@^4.1.0:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/composer/-/composer-4.1.0.tgz#d8b610a862b0a950aa29e760cec8520d903a051c"
+  integrity sha512-qIIoNYjwFHrQFUdB8kD3pZs30+JeYK9149EpOYr/NVrii00KMO31IonzZMeRSU4qazyWZpEgVzkBmQ6VFWxedA==
+  dependencies:
+    pretty-time "^1.1.0"
+    use "^3.1.1"
+
 compressible@~2.0.16:
   version "2.0.18"
   resolved "https://registry.yarnpkg.com/compressible/-/compressible-2.0.18.tgz#af53cca6b070d4c3c0750fbd77286a6d7cc46fba"
@@ -2490,6 +2498,13 @@ expo-location@~8.1.0:
   integrity sha512-G9JvsK1t9Z5Iybf+FCG81Jgm9Ee9leqpazxOPVabUJEWu/55Iex3yLGX04BuIA4ozAlJKBPzkhPdyqKdC7zrSw==
   dependencies:
     invariant "^2.2.4"
+
+expo-mail-composer@~8.1.0:
+  version "8.1.0"
+  resolved "https://registry.yarnpkg.com/expo-mail-composer/-/expo-mail-composer-8.1.0.tgz#7de693861e374add34ba4da69df677c2d6ba7104"
+  integrity sha512-CMkDa5YX9YZj/ZLHp0f1WAMBrCZjGqsloOH9JzhnCwMVy0BR+lLYoYWiwx2zk2JTpUgADXjdQKK4edDFclGwtg==
+  dependencies:
+    query-string "^6.2.0"
 
 expo-permissions@~8.1.0:
   version "8.1.0"
@@ -3503,6 +3518,13 @@ lru-cache@^4.0.1:
     pseudomap "^1.0.2"
     yallist "^2.1.2"
 
+mail@^0.2.3:
+  version "0.2.3"
+  resolved "https://registry.yarnpkg.com/mail/-/mail-0.2.3.tgz#1eddfe74bb38d7ebff6211aa903ba6beaf96ec24"
+  integrity sha1-Ht3+dLs41+v/YhGqkDumvq+W7CQ=
+  dependencies:
+    reparse ">= 0.1.2"
+
 make-dir@^2.0.0, make-dir@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/make-dir/-/make-dir-2.1.0.tgz#5f0310e18b8be898cc07009295a30ae41e91e6f5"
@@ -4394,6 +4416,11 @@ pretty-format@^25.1.0:
     ansi-styles "^4.0.0"
     react-is "^16.12.0"
 
+pretty-time@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/pretty-time/-/pretty-time-1.1.0.tgz#ffb7429afabb8535c346a34e41873adf3d74dd0e"
+  integrity sha512-28iF6xPQrP8Oa6uxE6a1biz+lWeTOAPKggvjB8HAs6nVMKZwf5bG++632Dx614hIWgUPkgivRfG+a8uAXGTIbA==
+
 private@^0.1.8:
   version "0.1.8"
   resolved "https://registry.yarnpkg.com/private/-/private-0.1.8.tgz#2381edb3689f7a53d653190060fcf822d2f368ff"
@@ -4451,6 +4478,15 @@ query-string@^6.12.1:
   version "6.12.1"
   resolved "https://registry.yarnpkg.com/query-string/-/query-string-6.12.1.tgz#2ae4d272db4fba267141665374e49a1de09e8a7c"
   integrity sha512-OHj+zzfRMyj3rmo/6G8a5Ifvw3AleL/EbcHMD27YA31Q+cO5lfmQxECkImuNVjcskLcvBRVHNAB3w6udMs1eAA==
+  dependencies:
+    decode-uri-component "^0.2.0"
+    split-on-first "^1.0.0"
+    strict-uri-encode "^2.0.0"
+
+query-string@^6.2.0:
+  version "6.13.0"
+  resolved "https://registry.yarnpkg.com/query-string/-/query-string-6.13.0.tgz#8d875f66581c854d7480ac79478abb847de742f6"
+  integrity sha512-KJe8p8EUcixhPCp4cJoTYVfmgKHjnAB/Pq3fiqlmyNHvpHnOL5U4YE7iI2PYivGHp4HFocWz300906BAQX0H7g==
   dependencies:
     decode-uri-component "^0.2.0"
     split-on-first "^1.0.0"
@@ -4701,6 +4737,11 @@ remove-trailing-separator@^1.0.1:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/remove-trailing-separator/-/remove-trailing-separator-1.1.0.tgz#c24bce2a283adad5bc3f58e0d48249b92379d8ef"
   integrity sha1-wkvOKig62tW8P1jg1IJJuSN52O8=
+
+"reparse@>= 0.1.2":
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/reparse/-/reparse-0.1.2.tgz#2d1fa585f5810d346cf3277a910a60efb5655c66"
+  integrity sha1-LR+lhfWBDTRs8yd6kQpg77VlXGY=
 
 repeat-element@^1.1.2:
   version "1.1.3"
@@ -5486,7 +5527,7 @@ use-subscription@^1.4.0:
   dependencies:
     object-assign "^4.1.1"
 
-use@^3.1.0:
+use@^3.1.0, use@^3.1.1:
   version "3.1.1"
   resolved "https://registry.yarnpkg.com/use/-/use-3.1.1.tgz#d50c8cac79a19fbc20f2911f56eb973f4e10070f"
   integrity sha512-cwESVXlO3url9YWlFW/TA9cshCEhtu7IKJ/p5soJ/gGpj7vbvFrAY/eIioQ6Dw23KjZhYgiIo8HOs1nQ2vr/oQ==
