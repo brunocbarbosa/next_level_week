@@ -1,6 +1,9 @@
 # WEB
 The web application is created with React, to create a project using Typescript write in terminal `npx create-react-app web --template=typescript`, don't forget the `--template=typescript` to work with typescript.
 
+## TIPS
+if any import have problem because the @types, just write the command `npm install @types/"the import name" -D`, the `-D` is because you just have to use it in development ambient, when the project go to production, is converted to `Javascript`, so you don't have this type of problem.
+
 ## DEPENDENCES
 - react-icons
 - react-router-dom

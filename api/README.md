@@ -1,6 +1,9 @@
 # BACKEND
 The API is created using NodeJs.
 
+## TIPS
+if any import have problem because the @types, just write the command `npm install @types/"the import name" -D`, the `-D` is because you just have to use it in development ambient, when the project go to production, is converted to `Javascript`, so you don't have this type of problem.
+
 ## DEPENDENCES
 - Express (using typescipt, dont't forget to run `npm install @types/express -D`, so you can find the dependence)
 - ts-node
