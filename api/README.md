@@ -9,15 +9,22 @@ The API is created using NodeJs.
 - knex
 - sqlite3
 - cors
+- multer
+- celebrate
 
 ## TYPESCRIPT
 The Typescript package is the first package to install, without it, you'll cannot run Typescript applications, to begin, you need to create a Typescript config file, just write in terminal `npx tsc --init`, to create `tsconfig.json`. 
 
 ## TS-NODE
-After install Typescript package, you have to install this package, with it you can run NodeJs applications created with Typescript, to install tap `npm install ts-node -D` in terminal, -D is important, it serves for uses the packages only in develop mode. To run the application just tap `npx ts-node "index path"`, npx because without it, you'll have to  write all the path.
+After install Typescript package, you have to install this package, with it you can run NodeJs applications created with Typescript, to install tap `npm install ts-node -D` in terminal, -D is important, it serves for uses the packages only in develop mode. 
+
+To run the application just tap `npx ts-node "index path"`, npx because without it, you'll have to  write all the path.
 
 ## TS-NODE-DEV
-This package will be observing all your alterations in the API, and will restart it ever you save it, so you don't have to restart manually, to install the dependence write in terminal `npm install ts-node-dev -D`, -D because you only use it in develop mode. To start the api just write in terminal `npx ts-node-dev "index path"`.
+This package will be observing all your alterations in the API, and will restart it ever you save it, so you don't have to restart manually, to install the dependence write in terminal `npm install ts-node-dev -D`, -D because you only use it in develop mode. 
+
+To start the api just write in terminal `npx ts-node-dev "index path"`.
+
 You can include a script in package.json, to simplify, you don't have to write npx, just like this example:
  
     "scripts": {
@@ -40,3 +47,13 @@ A tip is create a script to facilitate and you only have to write `npm run "scri
         "knex:migrate": "knex --knexfile knexfile.ts migrate:latest",
         "knex:seed": "knex --knexfile knexfile.ts seed:run"
     },
+
+## MULTER
+Multer is a package to work with images upload, to install it is `npm install multer`.
+
+## CELEBRATE
+Celebrate is an express middleware, you use it in a single route, or globally, and will see if your inputs are corrects, to install it write `npm install celebrate --save`. 
+
+Sometimes the intelicense won't get the functions in typescript, so, write this command `npm install @types/hapi__joi -D`. 
+
+To se the documentation access the link `https://github.com/arb/celebrate`.
