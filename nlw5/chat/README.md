@@ -5,6 +5,8 @@ api to build a chat
 dependences: 
 express
 typescript
+uuid
+typeorm
 
 definitions
 
