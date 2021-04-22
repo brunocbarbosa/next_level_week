@@ -1,17 +1,10 @@
 import React, { useState } from 'react';
-import { Image, Platform, SafeAreaView, StyleSheet, Text } from 'react-native';
+import { Dimensions, Image, Platform, SafeAreaView, StyleSheet, Text, TouchableOpacity } from 'react-native';
 import colors from '../../styles/colors';
 import wateringImage from '../assets/watering.png';
-import { Button } from '../components/Button';
-
+import { Feather } from '@expo/vector-icons'
 
 export function Welcome(){
-  const [visible, setVisible] = useState(false);
-
-  function handleVisibility(){
-    setVisible(true)
-  }
-
   return(
     <SafeAreaView style={styles.container}>
       <Text style={styles.title}> 
@@ -20,10 +13,7 @@ export function Welcome(){
         de forma fácil 
       </Text>
 
-      {
-        visible &&
-        <Image source={wateringImage} style={styles.image} />
-      }
+      <Image source={wateringImage} style={styles.image} resizeMode="contain" />
 
       <Text style={styles.subtitle}>
           Não esqueça de regar suas plantas.
@@ -31,7 +21,11 @@ export function Welcome(){
           sempre que precisar
       </Text>
 
-      <Button title='>' />    
+      <TouchableOpacity style={styles.button} activeOpacity={0.7} >
+        <Text>
+          <Feather name="chevron-right" style={styles.buttonIcon}/>
+        </Text>
+      </TouchableOpacity>
     </SafeAreaView>
   )
 }
@@ -40,7 +34,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'space-between',
+    justifyContent: 'space-around',
     paddingTop: Platform.OS === 'android' ? 30 : 0
   },
 
@@ -60,7 +54,23 @@ const styles = StyleSheet.create({
   },
 
   image: {
-    width: 292,
-    height: 284
+    
+    height: Dimensions.get('window').width * 0.7
+  },
+
+  button:{
+    backgroundColor: colors.green,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 16,
+    marginBottom: 20,
+    height: 56,
+    width: 56,
+  },
+
+  buttonIcon:{ 
+    fontSize: 32,
+    color: colors.white
+   
   }
 })
