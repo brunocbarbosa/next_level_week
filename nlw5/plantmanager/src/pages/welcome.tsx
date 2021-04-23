@@ -1,31 +1,41 @@
-import React, { useState } from 'react';
-import { Dimensions, Image, Platform, SafeAreaView, StyleSheet, Text, TouchableOpacity } from 'react-native';
-import colors from '../../styles/colors';
+import { Feather } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/core';
+import React from 'react';
+import { Dimensions, Image, Platform, SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import wateringImage from '../assets/watering.png';
-import { Feather } from '@expo/vector-icons'
+import colors from '../styles/colors';
+import fonts from '../styles/fonts';
 
 export function Welcome(){
+  const navigation = useNavigation();
+
+  function handleStart(){
+    navigation.navigate('UserIdentification')
+  }
+
   return(
     <SafeAreaView style={styles.container}>
-      <Text style={styles.title}> 
-        Gerencie {'\n'}
-        suas plantas {'\n'} 
-        de forma fácil 
-      </Text>
-
-      <Image source={wateringImage} style={styles.image} resizeMode="contain" />
-
-      <Text style={styles.subtitle}>
-          Não esqueça de regar suas plantas.
-          Nós cuidamos de lembrar você
-          sempre que precisar
-      </Text>
-
-      <TouchableOpacity style={styles.button} activeOpacity={0.7} >
-        <Text>
-          <Feather name="chevron-right" style={styles.buttonIcon}/>
+      <View style={styles.wrapper}>
+        <Text style={styles.title}> 
+          Gerencie {'\n'}
+          suas plantas de {'\n'} 
+          forma fácil 
         </Text>
-      </TouchableOpacity>
+
+        <Image source={wateringImage} style={styles.image} resizeMode="contain" />
+
+        <Text style={styles.subtitle}>
+            Não esqueça de regar suas plantas.
+            Nós cuidamos de lembrar você
+            sempre que precisar
+        </Text>
+
+        <TouchableOpacity style={styles.button} activeOpacity={0.7} onPress={handleStart} >
+          <Text>
+            <Feather name="chevron-right" style={styles.buttonIcon}/>
+          </Text>
+        </TouchableOpacity>
+      </View>
     </SafeAreaView>
   )
 }
@@ -33,24 +43,32 @@ export function Welcome(){
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+
+  wrapper:{
+    flex: 1,
     alignItems: 'center',
     justifyContent: 'space-around',
-    paddingTop: Platform.OS === 'android' ? 30 : 0
+    paddingTop: Platform.OS === 'android' ? 30 : 0,
+    paddingHorizontal: 20
   },
 
   title:{
-    fontSize: 32,
+    fontSize: 28,
     fontWeight: 'bold',
     textAlign: 'center',
     color: colors.heading,
-    marginTop: 38
+    marginTop: 38,
+    fontFamily: fonts.heading,
+    lineHeight: 34
   },
 
   subtitle:{
     textAlign: 'center',
     fontSize: 18,
     paddingHorizontal: 20,
-    color: colors.heading
+    color: colors.heading,
+    fontFamily: fonts.text,
   },
 
   image: {
@@ -72,5 +90,7 @@ const styles = StyleSheet.create({
     fontSize: 32,
     color: colors.white
    
-  }
+  },
+
+
 })
