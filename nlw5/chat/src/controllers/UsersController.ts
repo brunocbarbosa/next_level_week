@@ -7,10 +7,20 @@ class UsersController{
 
     const usersService = new UsersService();
 
-    const user = await usersService.create(email);
+    const user = await usersService.create({email});
 
     return res.json(user);
 
+  }
+
+  async findByEmail(req: Request, res: Response){
+    const { email } = req.params;
+
+    const usersService = new UsersService();
+
+    const user = await usersService.findByEmail(email);
+
+    return res.json(user)
   }
 }
 
