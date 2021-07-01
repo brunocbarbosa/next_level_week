@@ -29,7 +29,7 @@ class CreateComplimentService{
 
         await complimentsRepository.save(compliment);
 
-        return complimentsRepository;
+        return compliment;
 
     }
 }
