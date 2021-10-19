@@ -69,7 +69,7 @@ class AuthenticateUserService{
       }
     )
 
-    return res.data;
+    return { token, user };
   }
 }
 
