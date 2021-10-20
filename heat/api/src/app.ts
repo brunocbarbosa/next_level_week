@@ -1,7 +1,7 @@
 import 'dotenv/config';
 import express from 'express';
 import http from 'http';
-import { Server, Socket } from 'socket.io';
+import { Server } from 'socket.io';
 
 import { router } from './routes';
 
@@ -32,4 +32,4 @@ app.get("/signin/callback", (req, res) => {
   return res.json(code);
 })
 
-app.listen(3333, () => console.log('Server running on port 3333'))
+export { serverHttp, io }
