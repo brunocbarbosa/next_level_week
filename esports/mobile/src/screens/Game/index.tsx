@@ -1,20 +1,22 @@
 import { useEffect, useState } from 'react';
-import { SafeAreaView, TouchableOpacity, View, Image, FlatList, Text } from 'react-native';
+import { SafeAreaView, TouchableOpacity, View, Image, FlatList, Text } from 'react-native'
 
-import { useNavigation, useRoute } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native'
 import { Entypo } from '@expo/vector-icons'
 
-import { Background } from '../../components/Background';
+import { Background } from '../../components/Background'
 import logoImg from '../../assets/logo-nlw-esports.png'
-import { GAmeParams } from '../../@types/navigation';
-import { THEME } from '../../theme';
-import { Heading } from '../../components/Heading';
-import { DuoCard, DuoCardProps } from '../../components/DuoCard';
+import { GAmeParams } from '../../@types/navigation'
+import { THEME } from '../../theme'
+import { Heading } from '../../components/Heading'
+import { DuoCard, DuoCardProps } from '../../components/DuoCard'
+import { DuoMatch } from '../../components/DuoMatch'
 
 import { styles } from './styles';
 
 export function Game() {
   const [duos, setDuos] = useState<DuoCardProps[]>([])
+  const [discordDuoSelected, setDiscordDuoSelected] = useState('bruno_barbosa#2980')
 
   const route = useRoute()
   const game = route.params as GAmeParams
@@ -81,6 +83,11 @@ export function Game() {
           )}
         />
 
+        <DuoMatch 
+          visible={discordDuoSelected.length > 0}
+          discord="bruno_barbosa#2980"
+          onClose={() => setDiscordDuoSelected('')}
+        />
       </SafeAreaView>
     </Background>
   );
