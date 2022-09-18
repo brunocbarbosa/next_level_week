@@ -1,17 +1,17 @@
 import { useEffect, useState } from 'react';
+import { SafeAreaView, TouchableOpacity, View, Image, FlatList, Text } from 'react-native';
 
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { Entypo } from '@expo/vector-icons'
-import { SafeAreaView, TouchableOpacity, View, Image, FlatList } from 'react-native';
+
 import { Background } from '../../components/Background';
 import logoImg from '../../assets/logo-nlw-esports.png'
-
-import { styles } from './styles';
 import { GAmeParams } from '../../@types/navigation';
 import { THEME } from '../../theme';
 import { Heading } from '../../components/Heading';
 import { DuoCard, DuoCardProps } from '../../components/DuoCard';
 
+import { styles } from './styles';
 
 export function Game() {
   const [duos, setDuos] = useState<DuoCardProps[]>([])
@@ -65,7 +65,19 @@ export function Game() {
           data={duos}
           keyExtractor={item => item.id}
           renderItem={({item}) => (
-            <DuoCard data={item} />
+            <DuoCard 
+              data={item} 
+              onConnect={() => {}}
+            />
+          )}
+          horizontal
+          style={styles.containerList}
+          contentContainerStyle={[duos.length > 0 ? styles.contentList : styles.emptyListContent]}
+          showsHorizontalScrollIndicator={false}
+          ListEmptyComponent={() => (
+            <Text style={styles.emptyListText}>
+              Não há anúncios publicados ainda.
+            </Text>
           )}
         />
 
