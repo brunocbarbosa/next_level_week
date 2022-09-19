@@ -16,7 +16,7 @@ import { styles } from './styles';
 
 export function Game() {
   const [duos, setDuos] = useState<DuoCardProps[]>([])
-  const [discordDuoSelected, setDiscordDuoSelected] = useState('bruno_barbosa#2980')
+  const [discordDuoSelected, setDiscordDuoSelected] = useState('')
 
   const route = useRoute()
   const game = route.params as GAmeParams
@@ -30,6 +30,12 @@ export function Game() {
 
   function handleGoBack(){
     navigation.goBack()
+  }
+
+  async function getDiscordUser(adsId: string){
+    fetch(`http://192.168.0.66:3333/ads/${adsId}/discord`)
+    .then(res => res.json())
+    .then(data => setDiscordDuoSelected(data.discord))
   }
 
   return (
@@ -69,7 +75,7 @@ export function Game() {
           renderItem={({item}) => (
             <DuoCard 
               data={item} 
-              onConnect={() => {}}
+              onConnect={() => {getDiscordUser(item.id)}}
             />
           )}
           horizontal
@@ -85,7 +91,7 @@ export function Game() {
 
         <DuoMatch 
           visible={discordDuoSelected.length > 0}
-          discord="bruno_barbosa#2980"
+          discord={discordDuoSelected}
           onClose={() => setDiscordDuoSelected('')}
         />
       </SafeAreaView>
