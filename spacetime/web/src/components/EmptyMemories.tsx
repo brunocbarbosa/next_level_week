@@ -1,0 +1,14 @@
+export function EmptyMemories() {
+  return (
+    <div className="flex flex-col bg-[url(../assets/bg-starts.svg)] bg-cover p-16">
+      <div className="flex h-full items-center justify-center">
+        <p className="w-[360px] text-center leading-relaxed">
+          Você ainda não registrou nenhuma lembrança, comece a{' '}
+          <a href="" className="underline hover:text-gray-50">
+            criar agora!
+          </a>
+        </p>
+      </div>
+    </div>
+  )
+}
