@@ -4,8 +4,11 @@ import { Copyright } from '@/components/Copyright'
 import { EmptyMemories } from '@/components/EmptyMemories'
 import { Hero } from '@/components/Hero'
 import { Signin } from '@/components/Signin'
+import { Profile } from '@/components/Profile'
 
 export default function Home() {
+  const isAuthenticated = cookies().has('token')
+
   return (
     <main className="grid min-h-screen grid-cols-2">
       {/* Left */}
@@ -16,7 +19,7 @@ export default function Home() {
         {/* Stripes */}
         <div className="absolute bottom-0 right-2 top-0 w-2 bg-stripes"></div>
 
-        <Signin />
+        {isAuthenticated ? <Profile /> : <Signin />}
 
         <Hero />
 
