@@ -1,5 +1,10 @@
 import { StatusBar } from 'expo-status-bar'
 import { ImageBackground, View, Text, TouchableOpacity } from 'react-native'
+import * as SecureStore from 'expo-secure-store'
+import { styled } from 'nativewind'
+import { useAuthRequest, makeRedirectUri } from 'expo-auth-session'
+import { useEffect } from 'react'
+import { useRouter } from 'expo-router'
 
 import {
   useFonts,
@@ -9,12 +14,11 @@ import {
 
 import { BaiJamjuree_700Bold } from '@expo-google-fonts/bai-jamjuree'
 
-import blurBg from './src/assets/bg-blur.png'
-import Stripes from './src/assets/stripes.svg'
-import NlwLogo from './src/assets/nlw-spacetime-logo.svg'
-import { styled } from 'nativewind'
-import { useAuthRequest, makeRedirectUri } from 'expo-auth-session'
-import { useEffect } from 'react'
+import blurBg from '../src/assets/bg-blur.png'
+import Stripes from '../src/assets/stripes.svg'
+import NlwLogo from '../src/assets/nlw-spacetime-logo.svg'
+
+import { api } from '../src/lib/api'
 
 const StyledStripes = styled(Stripes)
 
@@ -26,13 +30,15 @@ const discovery = {
 }
 
 export default function App() {
+  const router = useRouter()
+
   const [hasLoadedFonts] = useFonts({
     Roboto_400Regular,
     Roboto_700Bold,
     BaiJamjuree_700Bold,
   })
 
-  const [request, response, promptAsync] = useAuthRequest(
+  const [, response, signInWithGihub] = useAuthRequest(
     {
       clientId: 'acfd2c07f10736285fb4',
       scopes: ['identity'],
@@ -43,9 +49,29 @@ export default function App() {
     discovery,
   )
 
+  async function handleGithubOauthCode(code: string) {
+    const res = await api.post('/register', {
+      code,
+    })
+
+    const { token } = res.data
+
+    await SecureStore.setItemAsync('token', token)
+
+    router.push('/memories')
+  }
+
   useEffect(() => {
+    /* console.log(
+      makeRedirectUri({
+        scheme: 'nlwspacetime',
+      }),
+    ) */
+
     if (response?.type === 'success') {
       const { code } = response.params
+
+      handleGithubOauthCode(code)
     }
   }, [response])
 
@@ -77,6 +103,7 @@ export default function App() {
         <TouchableOpacity
           activeOpacity={0.7}
           className="rounded-full bg-green-500 px-5 py-2"
+          onPress={() => signInWithGihub()}
         >
           <Text className="font-alt text-sm uppercase text-black">
             Cadastrar Lembrança
